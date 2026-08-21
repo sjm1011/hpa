@@ -1,0 +1,1589 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>定量免疫法糞便潛血檢查服務檢查紀錄結果表單</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --primary: #0b6b63;
+      --primary-dark: #07534d;
+      --primary-soft: #e8f5f2;
+      --border: #cbd5d1;
+      --text: #17211f;
+      --muted: #5e6a67;
+      --surface: #ffffff;
+      --page: #f3f6f5;
+      --danger: #b42318;
+      --danger-soft: #fff1f0;
+      --success: #176b43;
+      --success-soft: #eaf7ef;
+      --input-text: #0000ff;
+      --shadow: 0 12px 32px rgba(20, 52, 47, 0.09);
+      font-family: "Microsoft JhengHei", "Noto Sans TC", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      background: var(--page);
+      line-height: 1.55;
+    }
+
+    button,
+    input,
+    textarea {
+      font: inherit;
+    }
+
+    button,
+    label,
+    input,
+    textarea {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .screen-app {
+      min-height: 100vh;
+    }
+
+    .app-header {
+      padding: 28px 20px 24px;
+      color: #fff;
+      background: linear-gradient(135deg, #07534d, #0b7c71);
+    }
+
+    .app-header__inner,
+    .form-shell {
+      width: min(1080px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .app-header h1 {
+      max-width: 920px;
+      margin: 0;
+      font-size: clamp(1.45rem, 3vw, 2.2rem);
+      line-height: 1.35;
+      letter-spacing: 0.02em;
+    }
+
+    .app-header p {
+      margin: 10px 0 0;
+      color: rgba(255, 255, 255, 0.84);
+      font-size: 0.98rem;
+    }
+
+    .form-shell {
+      padding: 24px 0 120px;
+    }
+
+    .notice {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      margin-bottom: 18px;
+      padding: 14px 16px;
+      border: 1px solid #b8d9d3;
+      border-radius: 12px;
+      background: var(--primary-soft);
+      color: #164f49;
+    }
+
+    .notice strong {
+      white-space: nowrap;
+    }
+
+    .form-section {
+      margin-bottom: 18px;
+      padding: 24px;
+      border: 1px solid #dbe3e0;
+      border-radius: 16px;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    .section-heading {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      margin: 0 0 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #e7ecea;
+      font-size: 1.22rem;
+      line-height: 1.35;
+    }
+
+    .section-number {
+      display: inline-grid;
+      flex: 0 0 30px;
+      width: 30px;
+      height: 30px;
+      place-items: center;
+      border-radius: 50%;
+      color: #fff;
+      background: var(--primary);
+      font-size: 0.92rem;
+    }
+
+    .field-grid {
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .field {
+      grid-column: span 12;
+      min-width: 0;
+    }
+
+    .field.half {
+      grid-column: span 6;
+    }
+
+    .field.third {
+      grid-column: span 4;
+    }
+
+    .field.wide {
+      grid-column: span 8;
+    }
+
+    .field.basic-name,
+    .field.basic-gender {
+      grid-column: span 3;
+    }
+
+    .field.basic-birth {
+      grid-column: span 6;
+    }
+
+    .field.district-code {
+      grid-column: span 3;
+    }
+
+    .field.address-field {
+      grid-column: span 9;
+    }
+
+    .address-row {
+      display: grid;
+      grid-column: span 12;
+      grid-template-columns: 160px minmax(0, 1fr);
+      gap: 10px;
+      align-items: start;
+    }
+
+    .address-row > .field {
+      grid-column: auto;
+    }
+
+    .field-label,
+    fieldset legend {
+      display: block;
+      margin-bottom: 8px;
+      padding: 0;
+      font-weight: 700;
+      color: #24312e;
+    }
+
+    .required-mark {
+      margin-left: 4px;
+      color: var(--danger);
+    }
+
+    fieldset {
+      min-width: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+    }
+
+    input[type="text"],
+    input[type="tel"],
+    input[type="number"],
+    textarea,
+    .readonly-value {
+      width: 100%;
+      min-height: 48px;
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      color: var(--input-text);
+      background: #fff;
+      outline: none;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    textarea {
+      min-height: 96px;
+      resize: vertical;
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: #718096;
+      opacity: 1;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(11, 107, 99, 0.14);
+    }
+
+    .readonly-value {
+      display: flex;
+      align-items: center;
+      border-color: #d9dfdd;
+      color: #47534f;
+      background: #f5f7f6;
+    }
+
+    .option-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+    }
+
+    .option-grid.compact-options {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .option-card {
+      position: relative;
+      display: flex;
+      min-height: 48px;
+      gap: 10px;
+      align-items: center;
+      padding: 11px 13px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: #fff;
+      cursor: pointer;
+      transition: border-color 0.15s ease, background 0.15s ease;
+    }
+
+    .option-card:hover {
+      border-color: #79afa8;
+      background: #fbfefd;
+    }
+
+    .option-card:has(input:checked) {
+      border-color: var(--primary);
+      background: var(--primary-soft);
+    }
+
+    .option-card input {
+      width: 20px;
+      height: 20px;
+      flex: 0 0 20px;
+      margin: 0;
+      accent-color: var(--primary);
+    }
+
+    .date-row,
+    .phone-row {
+      display: grid;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .date-row {
+      grid-template-columns: auto minmax(56px, 1.2fr) auto minmax(48px, 1fr) auto minmax(48px, 1fr) auto;
+    }
+
+    .date-row input {
+      min-width: 0;
+      width: 100%;
+    }
+
+    .date-unit {
+      color: var(--muted);
+      font-size: 0.92rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .phone-row {
+      grid-template-columns: minmax(72px, 110px) auto minmax(140px, 1fr);
+    }
+
+    .phone-separator {
+      color: var(--muted);
+      font-size: 1.2rem;
+      font-weight: 700;
+      line-height: 48px;
+    }
+
+    .inline-subfield {
+      display: flex;
+      min-width: 0;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .inline-subfield input {
+      min-width: 0;
+      flex: 1 1 auto;
+    }
+
+    .subfield-label {
+      flex: 0 0 auto;
+      color: var(--muted);
+      font-size: 0.92rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .helper-text {
+      margin: 7px 0 0;
+      color: var(--muted);
+      font-size: 0.86rem;
+    }
+
+    .district-code input {
+      max-width: 160px;
+    }
+
+    .id-entry {
+      position: relative;
+      width: 100%;
+      min-width: 0;
+      max-width: 620px;
+    }
+
+    .id-boxes {
+      display: grid;
+      width: 100%;
+      min-width: 0;
+      grid-template-columns: repeat(10, minmax(0, 1fr));
+      gap: 5px;
+      pointer-events: none;
+    }
+
+    .id-box {
+      display: grid;
+      width: 100%;
+      min-width: 0;
+      height: 48px;
+      place-items: center;
+      border: 1px solid #95a29e;
+      border-radius: 6px;
+      color: var(--input-text);
+      background: #fff;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 400;
+    }
+
+    .id-native-input {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      opacity: 0.02;
+      cursor: text;
+    }
+
+    .id-entry:focus-within .id-boxes {
+      border-radius: 8px;
+      box-shadow: 0 0 0 3px rgba(11, 107, 99, 0.14);
+    }
+
+    .id-entry:focus-within .id-box {
+      border-color: var(--primary);
+    }
+
+    .conditional-field[hidden] {
+      display: none;
+    }
+
+    .field-error {
+      display: none;
+    }
+
+    .field.has-error input,
+    .field.has-error textarea,
+    .field.has-error .option-grid,
+    .field.has-error .id-boxes {
+      border-color: var(--danger);
+    }
+
+    .field.has-error .option-grid {
+      padding: 5px;
+      border: 1px solid var(--danger);
+      border-radius: 12px;
+      background: var(--danger-soft);
+    }
+
+    .field.has-error .id-box {
+      border-color: var(--danger);
+    }
+
+    .action-bar {
+      position: sticky;
+      bottom: 0;
+      z-index: 20;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      justify-content: flex-end;
+      margin-top: 24px;
+      padding: 14px 16px;
+      border: 1px solid #dbe3e0;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.96);
+      box-shadow: 0 -8px 28px rgba(20, 52, 47, 0.08);
+      backdrop-filter: blur(8px);
+    }
+
+    .status-group {
+      display: flex;
+      min-width: 0;
+      gap: 10px;
+      align-items: center;
+      margin-right: auto;
+    }
+
+    .completion-status {
+      flex: 0 0 auto;
+      padding: 8px 12px;
+      border-radius: 9px;
+      color: var(--muted);
+      background: #eef2f1;
+      font-weight: 700;
+    }
+
+    .validation-message {
+      display: none;
+      min-width: 0;
+      padding: 8px 12px;
+      border-radius: 9px;
+      color: #fff;
+      background: var(--danger);
+      font-size: 1.02rem;
+      font-weight: 700;
+      line-height: 1.35;
+    }
+
+    .validation-message.is-visible {
+      display: block;
+    }
+
+    .completion-status.is-complete {
+      color: var(--success);
+      background: var(--success-soft);
+    }
+
+    .btn {
+      min-height: 48px;
+      padding: 10px 20px;
+      border: 1px solid transparent;
+      border-radius: 10px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      color: #fff;
+      background: var(--primary);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+    }
+
+    .btn-secondary {
+      border-color: var(--primary);
+      color: var(--primary-dark);
+      background: #fff;
+    }
+
+    .btn:disabled {
+      border-color: #d5dcda;
+      color: #89928f;
+      background: #e8eceb;
+      cursor: not-allowed;
+    }
+
+    .print-root {
+      display: none;
+    }
+
+    @media (max-width: 760px) {
+      .app-header {
+        padding: 22px 16px 20px;
+      }
+
+      .app-header__inner,
+      .form-shell {
+        width: min(100% - 24px, 1080px);
+      }
+
+      .form-shell {
+        padding-top: 14px;
+      }
+
+      .form-section {
+        padding: 18px 15px;
+        border-radius: 13px;
+      }
+
+      .field.half,
+      .field.third,
+      .field.wide,
+      .field.basic-name,
+      .field.basic-gender,
+      .field.basic-birth,
+      .field.district-code,
+      .field.address-field {
+        grid-column: span 12;
+      }
+
+      .address-row {
+        grid-template-columns: 1fr;
+      }
+
+      .option-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .id-boxes {
+        gap: 2px;
+      }
+
+      .date-row,
+      .phone-row {
+        gap: 6px;
+      }
+
+      .inline-subfield {
+        gap: 4px;
+      }
+
+      .subfield-label {
+        font-size: 0.82rem;
+      }
+
+      .date-unit {
+        font-size: 0.82rem;
+      }
+
+      .date-row input,
+      .phone-row input {
+        padding-right: 7px;
+        padding-left: 7px;
+      }
+
+      .id-box {
+        min-width: 0;
+        border-radius: 4px;
+      }
+
+      .notice {
+        display: block;
+      }
+
+      .notice strong {
+        display: block;
+        margin-bottom: 4px;
+      }
+
+      .action-bar {
+        flex-wrap: wrap;
+      }
+
+      .completion-status {
+        width: auto;
+      }
+
+      .status-group {
+        width: 100%;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 1024px), (hover: none) and (pointer: coarse) {
+      .desktop-print {
+        display: none !important;
+      }
+    }
+
+    @page {
+      size: A4 portrait;
+      margin: 0;
+    }
+
+    @media print {
+      html,
+      body {
+        width: 210mm;
+        margin: 0;
+        padding: 0;
+        background: #fff;
+      }
+
+      .screen-app {
+        display: none !important;
+      }
+
+      .print-root {
+        display: block;
+      }
+
+      .print-page {
+        position: relative;
+        width: 210mm;
+        height: 297mm;
+        padding: 12mm 16mm 10mm 15mm;
+        overflow: hidden;
+        page-break-after: always;
+        color: #000;
+        background: #fff;
+        font-family: "DFKai-SB", "標楷體", "KaiTi", serif;
+        font-size: 9.5pt;
+        line-height: 1.28;
+      }
+
+      .print-page:last-child {
+        page-break-after: auto;
+      }
+
+      .print-meta {
+        display: grid;
+        grid-template-columns: 25mm 1fr;
+        gap: 4mm;
+        align-items: end;
+        margin-bottom: 2mm;
+        font-size: 9pt;
+      }
+
+      .print-funding {
+        text-align: center;
+      }
+
+      .print-title {
+        margin: 1mm 8mm 1.5mm 0;
+        text-align: center;
+        font-size: 16pt;
+        line-height: 1.15;
+        letter-spacing: 0.6pt;
+      }
+
+      .copy-label {
+        position: absolute;
+        top: 24mm;
+        right: 5mm;
+        writing-mode: vertical-rl;
+        text-orientation: upright;
+        font-size: 11pt;
+        letter-spacing: 0.8pt;
+      }
+
+      .print-line {
+        margin: 0.8mm 0;
+      }
+
+      .print-section-title {
+        display: inline-block;
+        margin: 1.2mm 0 0.7mm;
+        padding: 0 0.6mm;
+        border: 0.4mm solid #000;
+        font-size: 11.5pt;
+        font-weight: 700;
+        line-height: 1.05;
+      }
+
+      .print-grid {
+        display: grid;
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+        gap: 0.7mm 2mm;
+      }
+
+      .print-span-4 { grid-column: span 4; }
+      .print-span-5 { grid-column: span 5; }
+      .print-span-6 { grid-column: span 6; }
+      .print-span-7 { grid-column: span 7; }
+      .print-span-8 { grid-column: span 8; }
+      .print-span-12 { grid-column: span 12; }
+
+      .print-value {
+        display: inline-block;
+        min-width: 14mm;
+        padding: 0 1mm;
+        border-bottom: 0.25mm solid #000;
+        text-align: center;
+        font-family: "Microsoft JhengHei", sans-serif;
+        font-weight: 600;
+      }
+
+      .print-value.long {
+        min-width: 50mm;
+        text-align: left;
+      }
+
+      .print-check {
+        display: inline-grid;
+        width: 3.8mm;
+        height: 3.8mm;
+        margin: 0 0.5mm 0 1mm;
+        place-items: center;
+        border: 0.3mm solid #000;
+        vertical-align: -0.7mm;
+        font-family: Arial, sans-serif;
+        font-size: 9pt;
+        font-weight: 700;
+        line-height: 1;
+      }
+
+      .print-id-boxes {
+        display: inline-flex;
+        gap: 0.35mm;
+        margin-left: 1mm;
+        vertical-align: middle;
+      }
+
+      .print-id-box {
+        display: inline-grid;
+        width: 4.2mm;
+        height: 4.4mm;
+        place-items: center;
+        border: 0.25mm solid #000;
+        font-family: Arial, sans-serif;
+        font-size: 8pt;
+        font-weight: 700;
+      }
+
+      .print-address {
+        min-height: 5mm;
+        margin-top: 0.4mm;
+        padding: 0.3mm 1mm;
+        border-bottom: 0.25mm solid #000;
+        font-family: "Microsoft JhengHei", sans-serif;
+      }
+
+      .print-consent {
+        margin: 1mm 0 0;
+        font-size: 8.8pt;
+      }
+
+      .print-result-row {
+        margin: 0.7mm 0;
+      }
+
+      .print-footer {
+        margin-top: 1.8mm;
+        text-align: right;
+        font-size: 8.8pt;
+      }
+
+      .blank-line {
+        display: inline-block;
+        min-width: 22mm;
+        border-bottom: 0.25mm solid #000;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="screen-app">
+    <header class="app-header">
+      <div class="app-header__inner">
+        <h1>健康署定量免疫法糞便潛血檢查服務檢查紀錄結果表單</h1>
+        <p>請依序完成必填項目。標示「必填」的欄位不可留白。</p>
+      </div>
+    </header>
+
+    <form id="ifobtForm" class="form-shell" novalidate>
+      <div class="notice" role="note">
+        <strong>雛形說明</strong>
+        <span>目前不會保存資料；重新整理頁面後，填寫內容將清除。正式上線後，「完成填寫」將作為儲存資料的觸發點。鍵盤可使用 Enter 或 ↓ 前往下一題、↑ 返回上一題；單選題使用 ←、→ 變更選項。</span>
+      </div>
+
+      <section class="form-section" aria-labelledby="section-method">
+        <h2 id="section-method" class="section-heading"><span class="section-number">1</span>檢查資訊</h2>
+        <div class="field-grid">
+          <fieldset class="field" data-field="paymentMethod">
+            <legend>支付方式<span class="required-mark">必填</span></legend>
+            <div class="option-grid">
+              <label class="option-card"><input type="radio" name="paymentMethod" value="1" checked><span>(1) 預防保健</span></label>
+              <label class="option-card"><input type="radio" name="paymentMethod" value="3"><span>(3) 健保醫療給付</span></label>
+              <label class="option-card"><input type="radio" name="paymentMethod" value="4"><span>(4) 其他公務預算補助</span></label>
+              <label class="option-card"><input type="radio" name="paymentMethod" value="5"><span>(5) 自費健康檢查</span></label>
+              <label class="option-card"><input type="radio" name="paymentMethod" value="9"><span>(9) 其他</span></label>
+            </div>
+            <p class="field-error" aria-live="polite"></p>
+          </fieldset>
+
+          <fieldset class="field" data-field="screeningLocation">
+            <legend>篩檢地點<span class="required-mark">必填</span></legend>
+            <div class="option-grid">
+              <label class="option-card"><input type="radio" name="screeningLocation" value="1"><span>(1) 社區或職場設站篩檢</span></label>
+              <label class="option-card"><input type="radio" name="screeningLocation" value="2"><span>(2) 門診</span></label>
+              <label class="option-card"><input type="radio" name="screeningLocation" value="3"><span>(3) 住院</span></label>
+              <label class="option-card"><input type="radio" name="screeningLocation" value="4"><span>(4) 郵寄</span></label>
+              <label class="option-card"><input type="radio" name="screeningLocation" value="5"><span>(5) 其他</span></label>
+            </div>
+            <p class="field-error" aria-live="polite"></p>
+          </fieldset>
+        </div>
+      </section>
+
+      <section class="form-section" aria-labelledby="section-basic">
+        <h2 id="section-basic" class="section-heading"><span class="section-number">2</span>基本資料</h2>
+        <div class="field-grid">
+          <div class="field basic-name" data-field="fullName">
+            <label class="field-label" for="fullName">姓名<span class="required-mark">必填</span></label>
+            <input id="fullName" name="fullName" type="text" autocomplete="name" maxlength="50">
+            <p class="field-error" aria-live="polite"></p>
+          </div>
+
+          <fieldset class="field basic-gender" data-field="gender">
+            <legend>性別<span class="required-mark">必填</span></legend>
+            <div class="option-grid compact-options">
+              <label class="option-card"><input type="radio" name="gender" value="M"><span>男</span></label>
+              <label class="option-card"><input type="radio" name="gender" value="F"><span>女</span></label>
+            </div>
+            <p class="field-error" aria-live="polite"></p>
+          </fieldset>
+
+          <div class="field basic-birth" data-field="birthDate">
+            <span class="field-label">出生日期<span class="required-mark">必填</span></span>
+            <div class="date-row">
+              <span class="date-unit">民國</span>
+              <input id="birthYear" name="birthYear" type="text" inputmode="numeric" maxlength="3" autocomplete="bday-year" aria-label="出生日期民國年">
+              <span class="date-unit">年</span>
+              <input id="birthMonth" name="birthMonth" type="text" inputmode="numeric" maxlength="2" autocomplete="bday-month" aria-label="出生日期月份">
+              <span class="date-unit">月</span>
+              <input id="birthDay" name="birthDay" type="text" inputmode="numeric" maxlength="2" autocomplete="bday-day" aria-label="出生日期日期">
+              <span class="date-unit">日</span>
+            </div>
+            <p class="field-error" aria-live="polite"></p>
+          </div>
+
+          <div class="field" data-field="identityNumber">
+            <label class="field-label" for="identityNumber">身分證號 / 統一證號 (外籍)<span class="required-mark">必填</span></label>
+            <div class="id-entry">
+              <input id="identityNumber" class="id-native-input" name="identityNumber" type="text" maxlength="10" inputmode="text" autocapitalize="characters" autocomplete="off" aria-describedby="identityNumberError">
+              <div id="identityBoxes" class="id-boxes" aria-hidden="true"></div>
+            </div>
+            <p id="identityNumberError" class="field-error" aria-live="polite"></p>
+          </div>
+
+          <div class="field half" data-field="phoneContact">
+            <span class="field-label">聯絡電話<span class="required-mark">(聯絡電話與手機至少填寫一項)</span></span>
+            <div class="phone-row">
+              <input id="phoneArea" name="phoneArea" type="tel" inputmode="numeric" maxlength="3" autocomplete="tel-area-code" aria-label="區域碼">
+              <span class="phone-separator" aria-hidden="true">-</span>
+              <input id="phoneNumber" name="phoneNumber" type="tel" inputmode="numeric" maxlength="8" autocomplete="tel-local" aria-label="電話號碼">
+            </div>
+            <p class="field-error" aria-live="polite"></p>
+          </div>
+
+          <div class="field half" data-field="mobilePhone">
+            <label class="field-label" for="mobilePhone">手機</label>
+            <input id="mobilePhone" name="mobilePhone" type="tel" inputmode="numeric" maxlength="10" autocomplete="tel">
+            <p class="field-error" aria-live="polite"></p>
+          </div>
+
+          <div class="address-row">
+            <div class="field district-code" data-field="districtCode">
+              <label class="field-label" for="districtCode">鄉鎮市區代碼<span class="required-mark">必填</span></label>
+              <input id="districtCode" name="districtCode" type="text" inputmode="numeric" maxlength="6" placeholder="例如：402" autocomplete="postal-code">
+              <p class="field-error" aria-live="polite"></p>
+            </div>
+
+            <div class="field address-field" data-field="address">
+              <label class="field-label" for="address">現居住地址<span class="required-mark">必填</span></label>
+              <input id="address" name="address" type="text" maxlength="180" autocomplete="street-address">
+              <p class="field-error" aria-live="polite"></p>
+            </div>
+          </div>
+
+          <fieldset class="field" data-field="education">
+            <legend>教育程度<span class="required-mark">必填</span></legend>
+            <div class="option-grid">
+              <label class="option-card"><input type="radio" name="education" value="1"><span>(1) 無</span></label>
+              <label class="option-card"><input type="radio" name="education" value="2"><span>(2) 小學</span></label>
+              <label class="option-card"><input type="radio" name="education" value="3"><span>(3) 國（初）中</span></label>
+              <label class="option-card"><input type="radio" name="education" value="4"><span>(4) 高中（職）</span></label>
+              <label class="option-card"><input type="radio" name="education" value="5"><span>(5) 專科、大學</span></label>
+              <label class="option-card"><input type="radio" name="education" value="6"><span>(6) 研究所以上</span></label>
+              <label class="option-card"><input type="radio" name="education" value="7"><span>(7) 拒答</span></label>
+            </div>
+            <p class="field-error" aria-live="polite"></p>
+          </fieldset>
+        </div>
+      </section>
+
+      <section class="form-section" aria-labelledby="section-history">
+        <h2 id="section-history" class="section-heading"><span class="section-number">3</span>家族病史及吸菸習慣</h2>
+        <div class="field-grid">
+          <fieldset class="field half" data-field="smokingHistory">
+            <legend>吸菸史<span class="required-mark">必填</span></legend>
+            <div class="option-grid">
+              <label class="option-card"><input type="radio" name="smokingHistory" value="0"><span>無</span></label>
+              <label class="option-card"><input type="radio" name="smokingHistory" value="1"><span>有（含已戒菸）</span></label>
+            </div>
+            <p class="field-error" aria-live="polite"></p>
+          </fieldset>
+
+          <div id="smokingAgeField" class="field half conditional-field" data-field="smokingStartAge" hidden>
+            <label class="field-label" for="smokingStartAge">開始吸菸年齡<span class="required-mark">必填</span></label>
+            <input id="smokingStartAge" name="smokingStartAge" type="text" inputmode="numeric" maxlength="3">
+            <p class="field-error" aria-live="polite"></p>
+          </div>
+
+          <fieldset class="field" data-field="colorectalFamilyHistory">
+            <legend>有血緣的父母、兄弟姊妹、子女或其他親屬，是否曾罹患大腸直腸癌？<span class="required-mark">必填</span></legend>
+            <div class="option-grid">
+              <label class="option-card"><input type="radio" name="colorectalFamilyHistory" value="0"><span>(0) 無</span></label>
+              <label class="option-card"><input type="radio" name="colorectalFamilyHistory" value="1"><span>(1) 有</span></label>
+              <label class="option-card"><input type="radio" name="colorectalFamilyHistory" value="2"><span>(2) 不知道</span></label>
+            </div>
+            <p class="field-error" aria-live="polite"></p>
+          </fieldset>
+
+          <fieldset class="field" data-field="otherCancerFamilyHistory">
+            <legend>有血緣的父母、兄弟姊妹、子女或其他親屬，是否曾罹患其他癌症？<span class="required-mark">必填</span></legend>
+            <div class="option-grid">
+              <label class="option-card"><input type="radio" name="otherCancerFamilyHistory" value="0"><span>(0) 無</span></label>
+              <label class="option-card"><input type="radio" name="otherCancerFamilyHistory" value="1"><span>(1) 有</span></label>
+              <label class="option-card"><input type="radio" name="otherCancerFamilyHistory" value="2"><span>(2) 不知道</span></label>
+            </div>
+            <p class="field-error" aria-live="polite"></p>
+          </fieldset>
+        </div>
+      </section>
+
+      <section class="form-section" aria-labelledby="section-symptoms">
+        <h2 id="section-symptoms" class="section-heading"><span class="section-number">4</span>有無症狀</h2>
+        <div class="field-grid">
+          <fieldset class="field half" data-field="hasSymptoms">
+            <legend>請問您有無腸道不適症狀？如腹瀉、便祕、糞便變細、排泄黏液、便血、黃色帶血或其他症狀<span class="required-mark">必填</span></legend>
+            <div class="option-grid">
+              <label class="option-card"><input type="radio" name="hasSymptoms" value="0"><span>(0) 無</span></label>
+              <label class="option-card"><input type="radio" name="hasSymptoms" value="1"><span>(1) 有</span></label>
+            </div>
+            <p class="field-error" aria-live="polite"></p>
+          </fieldset>
+        </div>
+      </section>
+
+      <section class="form-section" aria-labelledby="section-case">
+        <h2 id="section-case" class="section-heading"><span class="section-number">5</span>個案檢查情形</h2>
+        <div class="field-grid">
+          <div class="field half">
+            <span class="field-label">檢查醫療院所名稱及代碼</span>
+            <div id="institutionDisplay" class="readonly-value" aria-readonly="true"></div>
+          </div>
+
+          <div class="field half" data-field="visitDate">
+            <span class="field-label">門診日期<span class="required-mark">必填</span></span>
+            <div class="date-row">
+              <span class="date-unit">民國</span>
+              <input id="visitYear" name="visitYear" type="text" inputmode="numeric" maxlength="3" aria-label="門診日期民國年">
+              <span class="date-unit">年</span>
+              <input id="visitMonth" name="visitMonth" type="text" inputmode="numeric" maxlength="2" aria-label="門診日期月份">
+              <span class="date-unit">月</span>
+              <input id="visitDay" name="visitDay" type="text" inputmode="numeric" maxlength="2" aria-label="門診日期日期">
+              <span class="date-unit">日</span>
+            </div>
+            <p class="field-error" aria-live="polite"></p>
+          </div>
+        </div>
+      </section>
+
+      <div class="action-bar">
+        <div class="status-group">
+          <div id="completionStatus" class="completion-status" role="status">尚未完成</div>
+          <div id="validationMessage" class="validation-message" role="alert" aria-live="assertive"></div>
+        </div>
+        <button id="completeButton" class="btn btn-primary" type="submit">完成填寫</button>
+        <button id="printButton" class="btn btn-secondary desktop-print" type="button" disabled>列印一式兩聯</button>
+      </div>
+    </form>
+  </main>
+
+  <div id="printRoot" class="print-root" aria-hidden="true"></div>
+
+  <script>
+    "use strict";
+
+    const PROTOTYPE_CONFIG = Object.freeze({
+      institutionName: "烏日澄清醫院",
+      institutionCode: "1536151042"
+    });
+
+    const form = document.getElementById("ifobtForm");
+    const completeButton = document.getElementById("completeButton");
+    const printButton = document.getElementById("printButton");
+    const completionStatus = document.getElementById("completionStatus");
+    const validationMessage = document.getElementById("validationMessage");
+    const identityInput = document.getElementById("identityNumber");
+    const identityBoxes = document.getElementById("identityBoxes");
+    const smokingAgeField = document.getElementById("smokingAgeField");
+    const smokingStartAge = document.getElementById("smokingStartAge");
+    let isComplete = false;
+
+    document.getElementById("institutionDisplay").textContent =
+      `${PROTOTYPE_CONFIG.institutionName} ${PROTOTYPE_CONFIG.institutionCode}`;
+
+    for (let index = 0; index < 10; index += 1) {
+      const box = document.createElement("span");
+      box.className = "id-box";
+      identityBoxes.appendChild(box);
+    }
+
+    function numbersOnly(input) {
+      input.value = input.value.replace(/[^0-9]/g, "");
+    }
+
+    function updateIdentityBoxes() {
+      const value = identityInput.value;
+      [...identityBoxes.children].forEach((box, index) => {
+        box.textContent = value[index] || "";
+      });
+    }
+
+    function getRadioValue(name) {
+      return form.querySelector(`input[name="${name}"]:checked`)?.value || "";
+    }
+
+    function getValue(id) {
+      return document.getElementById(id).value.trim();
+    }
+
+    function setError(fieldName, message) {
+      const field = form.querySelector(`[data-field="${fieldName}"]`);
+      if (!field) return;
+      field.classList.toggle("has-error", Boolean(message));
+      const error = field.querySelector(".field-error");
+      if (error) error.textContent = message;
+    }
+
+    function clearFieldErrorForElement(element) {
+      const field = element.closest("[data-field]");
+      if (!field) return;
+      field.classList.remove("has-error");
+      const error = field.querySelector(".field-error");
+      if (error) error.textContent = "";
+    }
+
+    function clearValidationPresentation() {
+      validationMessage.textContent = "";
+      validationMessage.classList.remove("is-visible");
+      form.querySelectorAll(".field.has-error").forEach(field => {
+        field.classList.remove("has-error");
+        const error = field.querySelector(".field-error");
+        if (error) error.textContent = "";
+      });
+    }
+
+    function presentFirstValidationError(fieldName) {
+      const firstField = form.querySelector(`[data-field="${fieldName}"]`);
+      if (!firstField) return;
+
+      const message = firstField.querySelector(".field-error")?.textContent || "請完成此欄位。";
+      form.querySelectorAll(".field.has-error").forEach(field => {
+        if (field === firstField) return;
+        field.classList.remove("has-error");
+        const error = field.querySelector(".field-error");
+        if (error) error.textContent = "";
+      });
+
+      validationMessage.textContent = message;
+      validationMessage.classList.add("is-visible");
+
+      const focusTarget = firstField.querySelector("input:checked") ||
+        firstField.querySelector("input, textarea");
+      if (focusTarget) {
+        focusTarget.focus({ preventScroll: true });
+        ensureKeyboardFocusVisible(focusTarget);
+      }
+    }
+
+    function rocDateParts(prefix) {
+      return {
+        year: Number(getValue(`${prefix}Year`)),
+        month: Number(getValue(`${prefix}Month`)),
+        day: Number(getValue(`${prefix}Day`))
+      };
+    }
+
+    function isValidRocDate(parts) {
+      if (!Number.isInteger(parts.year) || parts.year < 1 ||
+          !Number.isInteger(parts.month) || parts.month < 1 || parts.month > 12 ||
+          !Number.isInteger(parts.day) || parts.day < 1 || parts.day > 31) {
+        return false;
+      }
+      const westernYear = parts.year + 1911;
+      const date = new Date(westernYear, parts.month - 1, parts.day);
+      return date.getFullYear() === westernYear &&
+        date.getMonth() === parts.month - 1 &&
+        date.getDate() === parts.day;
+    }
+
+    function rocDateToDate(parts) {
+      return new Date(parts.year + 1911, parts.month - 1, parts.day);
+    }
+
+    function calculateCurrentAge(birthDate) {
+      const today = new Date();
+      let age = today.getFullYear() - birthDate.getFullYear();
+      const monthDifference = today.getMonth() - birthDate.getMonth();
+      if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthDate.getDate())) {
+        age -= 1;
+      }
+      return age;
+    }
+
+    function validatePhoneGroup(errors) {
+      const area = getValue("phoneArea");
+      const phone = getValue("phoneNumber");
+      const mobile = getValue("mobilePhone");
+
+      let phoneError = "";
+      let mobileError = "";
+
+      if (!area && !phone && !mobile) {
+        phoneError = "聯絡電話與手機至少必須填寫一項。";
+        mobileError = "聯絡電話與手機至少必須填寫一項。";
+      } else {
+        if (area || phone) {
+          if (!/^\d{2,3}$/.test(area) || !/^\d{7,8}$/.test(phone)) {
+            phoneError = "請同時填寫 2 至 3 碼區域碼及 7 至 8 碼電話號碼。";
+          }
+        }
+        if (mobile && !/^\d{10}$/.test(mobile)) {
+          mobileError = "手機必須為 10 碼半形數字。";
+        }
+      }
+
+      setError("phoneContact", phoneError);
+      setError("mobilePhone", mobileError);
+      if (phoneError) errors.push("phoneContact");
+      if (mobileError) errors.push("mobilePhone");
+    }
+
+    function validateRequiredRadio(errors, fieldName, message) {
+      const invalid = !getRadioValue(fieldName);
+      setError(fieldName, invalid ? message : "");
+      if (invalid) errors.push(fieldName);
+    }
+
+    function validateForm() {
+      const errors = [];
+
+      validateRequiredRadio(errors, "paymentMethod", "請選擇支付方式。");
+      validateRequiredRadio(errors, "screeningLocation", "請選擇篩檢地點。");
+
+      const nameInvalid = !getValue("fullName");
+      setError("fullName", nameInvalid ? "請填寫姓名。" : "");
+      if (nameInvalid) errors.push("fullName");
+
+      validateRequiredRadio(errors, "gender", "請選擇性別。");
+
+      const birthParts = rocDateParts("birth");
+      let birthError = "";
+      if (!getValue("birthYear") || !getValue("birthMonth") || !getValue("birthDay")) {
+        birthError = "請完整填寫出生日期。";
+      } else if (!isValidRocDate(birthParts)) {
+        birthError = "出生日期不是有效日期。";
+      } else if (rocDateToDate(birthParts) > new Date()) {
+        birthError = "出生日期不得晚於今天。";
+      }
+      setError("birthDate", birthError);
+      if (birthError) errors.push("birthDate");
+
+      const identityInvalid = !/^[A-Z0-9]{10}$/.test(getValue("identityNumber"));
+      setError("identityNumber", identityInvalid ? "身分證號 / 統一證號 (外籍) 必須填滿 10 碼半形英數。" : "");
+      if (identityInvalid) errors.push("identityNumber");
+
+      validatePhoneGroup(errors);
+
+      const districtInvalid = !/^\d{3,6}$/.test(getValue("districtCode"));
+      setError("districtCode", districtInvalid ? "鄉鎮市區代碼必須為 3 至 6 碼半形數字。" : "");
+      if (districtInvalid) errors.push("districtCode");
+
+      const addressInvalid = !getValue("address");
+      setError("address", addressInvalid ? "請填寫現居住地址。" : "");
+      if (addressInvalid) errors.push("address");
+
+      validateRequiredRadio(errors, "education", "請選擇教育程度。");
+      validateRequiredRadio(errors, "smokingHistory", "請選擇吸菸史。");
+
+      if (getRadioValue("smokingHistory") === "1") {
+        const ageText = getValue("smokingStartAge");
+        let ageError = "";
+        if (!/^\d+$/.test(ageText) || Number(ageText) < 1) {
+          ageError = "開始吸菸年齡必須為大於或等於 1 的半形整數。";
+        } else if (!birthError) {
+          const currentAge = calculateCurrentAge(rocDateToDate(birthParts));
+          if (Number(ageText) > currentAge) {
+            ageError = `開始吸菸年齡不得大於目前年齡 ${currentAge} 歲。`;
+          }
+        }
+        setError("smokingStartAge", ageError);
+        if (ageError) errors.push("smokingStartAge");
+      } else {
+        setError("smokingStartAge", "");
+      }
+
+      validateRequiredRadio(errors, "colorectalFamilyHistory", "請選擇大腸直腸癌家族病史。");
+      validateRequiredRadio(errors, "otherCancerFamilyHistory", "請選擇其他癌症家族病史。");
+      validateRequiredRadio(errors, "hasSymptoms", "請選擇有無腸道不適症狀。");
+
+      const visitParts = rocDateParts("visit");
+      let visitError = "";
+      if (!getValue("visitYear") || !getValue("visitMonth") || !getValue("visitDay")) {
+        visitError = "請完整填寫門診日期。";
+      } else if (!isValidRocDate(visitParts)) {
+        visitError = "門診日期不是有效日期。";
+      }
+      setError("visitDate", visitError);
+      if (visitError) errors.push("visitDate");
+
+      return errors;
+    }
+
+    function setCompletionState(complete) {
+      clearValidationPresentation();
+      isComplete = complete;
+      completionStatus.textContent = complete ? "表單已完成" : "尚未完成";
+      completionStatus.classList.toggle("is-complete", complete);
+      printButton.disabled = !complete;
+    }
+
+    function invalidateCompletion() {
+      if (isComplete) setCompletionState(false);
+    }
+
+    function isKeyboardTargetVisible(element) {
+      return !element.disabled && element.offsetParent !== null &&
+        getComputedStyle(element).visibility !== "hidden";
+    }
+
+    function getKeyboardNavigationTargets() {
+      const elements = [...form.querySelectorAll("input:not([type='hidden']), textarea")]
+        .filter(isKeyboardTargetVisible);
+      const targets = [];
+      const radioGroups = new Set();
+
+      elements.forEach(element => {
+        if (element instanceof HTMLInputElement && element.type === "radio") {
+          if (radioGroups.has(element.name)) return;
+          radioGroups.add(element.name);
+          const group = elements.filter(candidate =>
+            candidate instanceof HTMLInputElement &&
+            candidate.type === "radio" &&
+            candidate.name === element.name
+          );
+          targets.push(group.find(candidate => candidate.checked) || group[0]);
+          return;
+        }
+        targets.push(element);
+      });
+
+      targets.push(completeButton);
+      return targets;
+    }
+
+    function ensureKeyboardFocusVisible(target) {
+      requestAnimationFrame(() => {
+        const focusArea = target.closest(".option-card, .inline-subfield") || target;
+        const focusRect = focusArea.getBoundingClientRect();
+        const actionRect = document.querySelector(".action-bar").getBoundingClientRect();
+        const visibleTop = 16;
+        const visibleBottom = actionRect.top > 0 && actionRect.top < window.innerHeight
+          ? actionRect.top - 16
+          : window.innerHeight - 16;
+
+        if (focusRect.top < visibleTop || focusRect.bottom > visibleBottom) {
+          focusArea.scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" });
+        }
+      });
+    }
+
+    function moveKeyboardFocus(currentTarget, direction) {
+      const targets = getKeyboardNavigationTargets();
+      let currentIndex = targets.indexOf(currentTarget);
+
+      if (currentTarget instanceof HTMLInputElement && currentTarget.type === "radio") {
+        currentIndex = targets.findIndex(target =>
+          target instanceof HTMLInputElement &&
+          target.type === "radio" &&
+          target.name === currentTarget.name
+        );
+      }
+
+      if (currentIndex < 0) return;
+      const nextIndex = Math.max(0, Math.min(targets.length - 1, currentIndex + direction));
+      if (nextIndex === currentIndex) return;
+      const nextTarget = targets[nextIndex];
+
+      if (nextTarget instanceof HTMLInputElement &&
+          nextTarget.type === "radio" &&
+          !getRadioValue(nextTarget.name)) {
+        nextTarget.checked = true;
+        nextTarget.dispatchEvent(new Event("input", { bubbles: true }));
+        nextTarget.dispatchEvent(new Event("change", { bubbles: true }));
+      }
+
+      nextTarget.focus({ preventScroll: true });
+      ensureKeyboardFocusVisible(nextTarget);
+    }
+
+    function setTodayAsVisitDate() {
+      const today = new Date();
+      document.getElementById("visitYear").value = String(today.getFullYear() - 1911);
+      document.getElementById("visitMonth").value = String(today.getMonth() + 1);
+      document.getElementById("visitDay").value = String(today.getDate());
+    }
+
+    function toggleSmokingAge() {
+      const show = getRadioValue("smokingHistory") === "1";
+      smokingAgeField.hidden = !show;
+      if (!show) {
+        smokingStartAge.value = "";
+        setError("smokingStartAge", "");
+      }
+    }
+
+    function option(code, label, selectedCode) {
+      return `<span class="print-check">${selectedCode === code ? "✓" : ""}</span>${label}`;
+    }
+
+    function escapeHtml(value) {
+      return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    function printIdentityBoxes(value) {
+      return [...Array(10)].map((_, index) =>
+        `<span class="print-id-box">${escapeHtml(value[index] || "")}</span>`
+      ).join("");
+    }
+
+    function formatDistrictCode(value) {
+      const first = value.slice(0, 3).padEnd(3, "□");
+      const second = value.slice(3, 6).padEnd(3, "□");
+      return `${first}-${second}`;
+    }
+
+    function collectFormData() {
+      return {
+        paymentMethod: getRadioValue("paymentMethod"),
+        screeningLocation: getRadioValue("screeningLocation"),
+        fullName: getValue("fullName"),
+        gender: getRadioValue("gender"),
+        birthYear: getValue("birthYear"),
+        birthMonth: getValue("birthMonth"),
+        birthDay: getValue("birthDay"),
+        identityNumber: getValue("identityNumber"),
+        phoneArea: getValue("phoneArea"),
+        phoneNumber: getValue("phoneNumber"),
+        mobilePhone: getValue("mobilePhone"),
+        districtCode: getValue("districtCode"),
+        address: getValue("address"),
+        education: getRadioValue("education"),
+        smokingHistory: getRadioValue("smokingHistory"),
+        smokingStartAge: getValue("smokingStartAge"),
+        colorectalFamilyHistory: getRadioValue("colorectalFamilyHistory"),
+        otherCancerFamilyHistory: getRadioValue("otherCancerFamilyHistory"),
+        hasSymptoms: getRadioValue("hasSymptoms"),
+        visitYear: getValue("visitYear"),
+        visitMonth: getValue("visitMonth"),
+        visitDay: getValue("visitDay")
+      };
+    }
+
+    function buildPrintPage(copyLabel, data) {
+      const paymentOptions = [
+        ["1", "(1)預防保健"], ["3", "(3)健保醫療給付"],
+        ["4", "(4)其他公務預算補助"], ["5", "(5)自費健康檢查"], ["9", "(9)其他"]
+      ].map(([code, label]) => option(code, label, data.paymentMethod)).join("；");
+
+      const locationOptions = [
+        ["1", "(1)社區或職場設站篩檢"], ["2", "(2)門診"], ["3", "(3)住院"],
+        ["4", "(4)郵寄"], ["5", "(5)其他"]
+      ].map(([code, label]) => option(code, label, data.screeningLocation)).join("；");
+
+      const educationOptions = [
+        ["1", "(1)無"], ["2", "(2)小學"], ["3", "(3)國（初）中"], ["4", "(4)高中（職）"],
+        ["5", "(5)專科、大學"], ["6", "(6)研究所以上"], ["7", "(7)拒答"]
+      ].map(([code, label]) => option(code, label, data.education)).join("；");
+
+      return `
+        <section class="print-page">
+          <div class="print-meta"><span>附表五之四</span><span class="print-funding">本檢查經費「由衛生福利部國民健康署運用菸品健康福利捐／公務預算補助」</span></div>
+          <h1 class="print-title">健康署定量免疫法糞便潛血檢查服務檢查紀錄結果表單</h1>
+          <div class="copy-label">${escapeHtml(copyLabel)}</div>
+
+          <div class="print-line">支付方式：${paymentOptions}</div>
+          <div class="print-line">篩檢地點：${locationOptions}</div>
+
+          <div class="print-section-title">基本資料</div>
+          <div class="print-grid">
+            <div class="print-span-5">姓名：<span class="print-value long">${escapeHtml(data.fullName)}</span></div>
+            <div class="print-span-3">性別：${option("M", "男", data.gender)} ${option("F", "女", data.gender)}</div>
+            <div class="print-span-4">出生日期：民國 <span class="print-value">${escapeHtml(data.birthYear)}</span> 年 <span class="print-value">${escapeHtml(data.birthMonth)}</span> 月 <span class="print-value">${escapeHtml(data.birthDay)}</span> 日</div>
+            <div class="print-span-6">身分證統一編號／統一證號（外籍）：<span class="print-id-boxes">${printIdentityBoxes(data.identityNumber)}</span></div>
+            <div class="print-span-6">聯絡電話：（<span class="print-value">${escapeHtml(data.phoneArea)}</span>）<span class="print-value">${escapeHtml(data.phoneNumber)}</span>　手機：<span class="print-value">${escapeHtml(data.mobilePhone)}</span></div>
+            <div class="print-span-12">現居住地址（鄉鎮市區代碼：${escapeHtml(formatDistrictCode(data.districtCode))}）<div class="print-address">${escapeHtml(data.address)}</div></div>
+            <div class="print-span-12">教育：${educationOptions}</div>
+          </div>
+
+          <div class="print-section-title">家族病史及吸菸習慣</div>
+          <div class="print-line">1. 吸菸史：${option("0", "無", data.smokingHistory)}；${option("1", "有（含已戒菸）", data.smokingHistory)}，開始吸菸年齡：<span class="print-value">${escapeHtml(data.smokingStartAge)}</span> 歲。</div>
+          <div class="print-line">2. 請問與您有血緣的父母、兄弟姊妹或子女或其他親屬有無得過大腸直腸癌？${option("0", "(0)無", data.colorectalFamilyHistory)}；${option("1", "(1)有", data.colorectalFamilyHistory)}；${option("2", "(2)不知道", data.colorectalFamilyHistory)}。</div>
+          <div class="print-line">3. 請問與您有血緣的父母、兄弟姊妹或子女或其他親屬有無得過其他癌症？${option("0", "(0)無", data.otherCancerFamilyHistory)}；${option("1", "(1)有", data.otherCancerFamilyHistory)}；${option("2", "(2)不知道", data.otherCancerFamilyHistory)}。</div>
+          <div class="print-line">以上如有任一項填寫「有」，請繼續填寫附表五之六。</div>
+
+          <div class="print-section-title">有無症狀</div>
+          <div class="print-line">請問您有無腸道不適症狀？如腹瀉、便祕、糞便變細、排泄黏液、便血、黃色帶血或其他症狀 ${option("0", "(0)無", data.hasSymptoms)}；${option("1", "(1)有", data.hasSymptoms)}。</div>
+          <div class="print-consent">＊本人同意接受糞便潛血檢查，本表資料將作為衛生及學術單位進行個案追蹤關懷及健康管理、資格檢核、比對連結、統計分析、政策評估及其他相關目的使用。</div>
+          <div class="print-line">確認以上資料正確無誤：<span class="blank-line"></span>（簽名）</div>
+
+          <div class="print-section-title">個案檢查情形</div>（檢查醫療院所）
+          <div class="print-line">檢查醫療院所名稱及代碼：<span class="print-value long">${escapeHtml(PROTOTYPE_CONFIG.institutionName)} ${escapeHtml(PROTOTYPE_CONFIG.institutionCode)}</span>，門診日期：民國 <span class="print-value">${escapeHtml(data.visitYear)}</span> 年 <span class="print-value">${escapeHtml(data.visitMonth)}</span> 月 <span class="print-value">${escapeHtml(data.visitDay)}</span> 日。</div>
+
+          <div class="print-section-title">糞便潛血檢查結果</div>（糞便潛血檢驗機構填寫）
+          <div class="print-result-row">1. 醫事檢驗機構／醫療院所名稱及代碼：<span class="blank-line" style="min-width: 70mm"></span></div>
+          <div class="print-result-row">2. 檢驗日期：民國 <span class="blank-line"></span> 年 <span class="blank-line"></span> 月 <span class="blank-line"></span> 日。</div>
+          <div class="print-result-row">3. 檢驗結果：${option("", "(0)陰性", "x")} ${option("", "(1)陽性", "x")}，數值：<span class="blank-line"></span>。</div>
+          <div class="print-result-row">4. 定量試劑商品名稱：${option("", "(0)Eiken", "x")}，${option("", "(2)其他", "x")}，${option("", "(3)Kyowa（HM-JACKarc）", "x")}。</div>
+
+          <div class="print-section-title">個案確診結果</div>
+          <div class="print-result-row">1. 前項檢查陽性個案於檢查後三個月內有沒有接受後續確診？${option("", "(0)沒有", "x")}；${option("", "(1)有", "x")}。</div>
+          <div class="print-result-row">2. 沒有接受確診理由為：${option("", "(1)無法聯繫", "x")}，${option("", "(2)出國", "x")}，${option("", "(3)搬家", "x")}，${option("", "(4)死亡", "x")}，${option("", "(5)拒做", "x")}，${option("", "(6)其他", "x")}。</div>
+          <div class="print-result-row">3. 確診醫療院所名稱及代碼：<span class="blank-line" style="min-width: 60mm"></span>，確診日期：民國 <span class="blank-line"></span> 年 <span class="blank-line"></span> 月 <span class="blank-line"></span> 日。</div>
+          <div class="print-result-row">4. 檢查方法：${option("", "(1)大腸鏡", "x")}，${option("", "(9)其他", "x")}。</div>
+          <div class="print-result-row">5. 診斷：${option("", "(0)正常", "x")}，${option("", "(1)痔瘡", "x")}，${option("", "(2)潰瘍性大腸炎", "x")}，${option("", "(3)息肉", "x")}，${option("", "(4)大腸癌", "x")}，${option("", "(9)其他", "x")}。</div>
+          <div class="print-result-row">＊如有息肉，息肉有無切除：${option("", "(1)未切除", "x")} ${option("", "(2)已完全切除", "x")} ${option("", "(3)未完全切除", "x")}。</div>
+          <div class="print-footer">（114 年 1 月修訂）</div>
+        </section>`;
+    }
+
+    function preparePrint() {
+      const data = collectFormData();
+      document.getElementById("printRoot").innerHTML =
+        buildPrintPage("第一聯：存檢查醫療機構", data) +
+        buildPrintPage("第二聯：診及治療醫院", data);
+    }
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      setCompletionState(false);
+      const errors = validateForm();
+      if (errors.length > 0) {
+        presentFirstValidationError(errors[0]);
+        return;
+      }
+      setCompletionState(true);
+      completionStatus.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    });
+
+    form.addEventListener("keydown", (event) => {
+      const target = event.target;
+      if (!(target instanceof HTMLInputElement || target instanceof HTMLTextAreaElement)) return;
+      if (event.isComposing || event.keyCode === 229) return;
+
+      if (target instanceof HTMLInputElement && target.type === "radio") {
+        if (event.key === "ArrowDown" || event.key === "ArrowUp") {
+          event.preventDefault();
+          moveKeyboardFocus(target, event.key === "ArrowDown" ? 1 : -1);
+          return;
+        }
+
+        if (event.key === "Enter") {
+          event.preventDefault();
+          if (!target.checked) {
+            target.checked = true;
+            target.dispatchEvent(new Event("input", { bubbles: true }));
+            target.dispatchEvent(new Event("change", { bubbles: true }));
+          }
+          moveKeyboardFocus(target, 1);
+        }
+        return;
+      }
+
+      if (event.key === "Enter") {
+        event.preventDefault();
+        moveKeyboardFocus(target, 1);
+        return;
+      }
+
+      if (event.key === "ArrowDown") {
+        event.preventDefault();
+        moveKeyboardFocus(target, 1);
+      } else if (event.key === "ArrowUp") {
+        event.preventDefault();
+        moveKeyboardFocus(target, -1);
+      }
+    });
+
+    form.addEventListener("input", (event) => {
+      const target = event.target;
+      if (!(target instanceof HTMLInputElement || target instanceof HTMLTextAreaElement)) return;
+
+      if (["birthYear", "birthMonth", "birthDay", "visitYear", "visitMonth", "visitDay",
+           "phoneArea", "phoneNumber", "mobilePhone", "districtCode", "smokingStartAge"].includes(target.id)) {
+        numbersOnly(target);
+      }
+
+      if (target === identityInput) {
+        target.value = target.value.toUpperCase().replace(/[^A-Z0-9]/g, "").slice(0, 10);
+        updateIdentityBoxes();
+      }
+
+      clearFieldErrorForElement(target);
+      clearValidationPresentation();
+      invalidateCompletion();
+    });
+
+    form.addEventListener("change", (event) => {
+      clearFieldErrorForElement(event.target);
+      clearValidationPresentation();
+      if (event.target.name === "smokingHistory") toggleSmokingAge();
+      invalidateCompletion();
+    });
+
+    printButton.addEventListener("click", () => {
+      if (!isComplete) return;
+      preparePrint();
+      window.print();
+    });
+
+    window.addEventListener("beforeprint", () => {
+      if (isComplete) preparePrint();
+    });
+
+    setTodayAsVisitDate();
+    updateIdentityBoxes();
+    toggleSmokingAge();
+    requestAnimationFrame(() => {
+      form.querySelector('input[name="paymentMethod"][value="1"]').focus({ preventScroll: true });
+    });
+  </script>
+</body>
+</html>
