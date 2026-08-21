@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="烏日健檢表單測試入口，提供夥伴進入各項健檢表單進行測試。">
-  <title>烏日健檢表單｜測試入口</title>
+  <meta name="description" content="烏日澄清公費健檢表單測試入口，提供夥伴進入各項健檢表單進行測試。">
+  <title>烏日澄清公費健檢表單｜測試入口</title>
   <style>
     :root {
       color-scheme: light;
@@ -46,14 +46,6 @@
       margin: 0 auto;
     }
 
-    .eyebrow {
-      margin: 0 0 8px;
-      color: rgba(255, 255, 255, 0.8);
-      font-size: 0.9rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-    }
-
     h1 {
       margin: 0;
       font-size: clamp(1.8rem, 5vw, 2.8rem);
@@ -86,25 +78,31 @@
       color: var(--muted);
     }
 
-    .form-grid {
+    .screening-list {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 20px;
+      gap: 22px;
     }
 
-    .form-card {
-      display: flex;
-      min-height: 250px;
-      flex-direction: column;
-      padding: 24px;
+    .screening-card {
       border: 1px solid var(--border);
       border-radius: 18px;
+      overflow: hidden;
       background: var(--surface);
       box-shadow: var(--shadow);
     }
 
-    .form-card__number {
+    .screening-card__header {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      padding: 22px 24px;
+      border-bottom: 1px solid var(--border);
+      background: linear-gradient(135deg, var(--primary-soft), #f8fbfa);
+    }
+
+    .screening-card__number {
       display: grid;
+      flex: 0 0 42px;
       width: 42px;
       height: 42px;
       place-items: center;
@@ -114,64 +112,81 @@
       font-weight: 700;
     }
 
-    .form-card h3 {
-      margin: 22px 0 8px;
+    .screening-card h3 {
+      margin: 0;
       font-size: 1.24rem;
       line-height: 1.4;
     }
 
-    .form-card p {
-      margin: 0 0 22px;
+    .screening-card__count {
+      margin: 3px 0 0;
       color: var(--muted);
-      font-size: 0.95rem;
+      font-size: 0.88rem;
     }
 
-    .form-card__action {
+    .form-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .form-item {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 20px;
+      align-items: center;
+      padding: 18px 24px;
+    }
+
+    .form-item + .form-item {
+      border-top: 1px solid #e7ecea;
+    }
+
+    .form-item__title {
+      margin: 0;
+      font-weight: 700;
+      line-height: 1.55;
+    }
+
+    .form-item__action {
       display: inline-flex;
-      min-height: 44px;
+      min-width: 112px;
+      min-height: 42px;
       align-items: center;
       justify-content: center;
-      margin-top: auto;
-      padding: 10px 18px;
+      padding: 9px 16px;
       border-radius: 10px;
       color: #ffffff;
       background: var(--primary);
       font-weight: 700;
+      white-space: nowrap;
       text-decoration: none;
       transition: background 0.18s ease, transform 0.18s ease;
     }
 
-    .form-card__action:hover {
+    .form-item__action:hover {
       background: var(--primary-dark);
       transform: translateY(-1px);
     }
 
-    .form-card__action:focus-visible {
+    .form-item__action:focus-visible {
       outline: 3px solid rgba(11, 107, 99, 0.28);
       outline-offset: 3px;
     }
 
-    .form-card--pending {
-      box-shadow: none;
-    }
-
-    .form-card--pending .form-card__number {
-      color: #66736f;
-      background: #e6ecea;
-    }
-
-    .form-card__status {
+    .form-item__status {
       display: inline-flex;
-      min-height: 44px;
+      min-width: 112px;
+      min-height: 42px;
       align-items: center;
       justify-content: center;
-      margin-top: auto;
-      padding: 10px 18px;
+      padding: 9px 16px;
       border: 1px dashed #b7c4c0;
       border-radius: 10px;
       color: #6b7774;
       background: #f7f9f8;
       font-weight: 700;
+      white-space: nowrap;
     }
 
     footer {
@@ -190,17 +205,24 @@
         padding-top: 28px;
       }
 
-      .form-grid {
-        grid-template-columns: 1fr;
+      .screening-card__header {
+        padding: 18px;
       }
 
-      .form-card {
-        min-height: 220px;
+      .form-item {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 18px;
+      }
+
+      .form-item__action,
+      .form-item__status {
+        width: 100%;
       }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .form-card__action {
+      .form-item__action {
         transition: none;
       }
     }
@@ -209,44 +231,82 @@
 <body>
   <header class="page-header">
     <div class="header-inner">
-      <p class="eyebrow">WURI HEALTH EXAMINATION</p>
-      <h1>烏日健檢表單</h1>
-      <p class="header-description">請選擇要測試的網頁。各項表單仍在測試階段，填寫內容不會作為正式醫療紀錄。</p>
+      <h1>烏日澄清公費健檢表單</h1>
+      <p class="header-description">請選擇健檢項目及要測試的表單。各項表單仍在測試階段，填寫內容不會作為正式醫療紀錄。</p>
     </div>
   </header>
 
   <main>
     <section aria-labelledby="form-list-title">
       <div class="section-heading">
-        <h2 id="form-list-title">測試網頁</h2>
-        <p>目前開放 1 項，其他網頁將於完成後陸續加入。</p>
+        <h2 id="form-list-title">健檢項目及表單</h2>
+        <p>目前共有 3 項健檢項目、6 張表單；已開放 1 張，其餘將於完成後陸續加入。</p>
       </div>
 
-      <div class="form-grid">
-        <article class="form-card">
-          <span class="form-card__number" aria-hidden="true">01</span>
-          <h3>大腸癌篩檢</h3>
-          <p>定量免疫法糞便潛血檢查服務檢查紀錄結果表單。</p>
-          <a class="form-card__action" href="./iFOBT_1.html">進入網頁</a>
+      <div class="screening-list">
+        <article class="screening-card">
+          <header class="screening-card__header">
+            <span class="screening-card__number" aria-hidden="true">01</span>
+            <div>
+              <h3>大腸癌篩檢</h3>
+              <p class="screening-card__count">共 3 張表單</p>
+            </div>
+          </header>
+          <ul class="form-list">
+            <li class="form-item">
+              <p class="form-item__title">健康署定量免疫法糞便潛血檢查服務檢查紀錄結果表單</p>
+              <a class="form-item__action" href="./iFOBT_1.html">進入表單</a>
+            </li>
+            <li class="form-item">
+              <p class="form-item__title">大腸癌篩檢衛教指引檢核表</p>
+              <span class="form-item__status">建置中</span>
+            </li>
+            <li class="form-item">
+              <p class="form-item__title">大腸癌篩檢家族史及吸菸習慣資料表</p>
+              <span class="form-item__status">建置中</span>
+            </li>
+          </ul>
         </article>
 
-        <article class="form-card form-card--pending">
-          <span class="form-card__number" aria-hidden="true">02</span>
-          <h3>第二張表單</h3>
-          <p>此項目尚未開放，完成後將在此提供測試連結。</p>
-          <span class="form-card__status">建置中</span>
+        <article class="screening-card">
+          <header class="screening-card__header">
+            <span class="screening-card__number" aria-hidden="true">02</span>
+            <div>
+              <h3>子宮頸癌篩檢</h3>
+              <p class="screening-card__count">共 2 張表單</p>
+            </div>
+          </header>
+          <ul class="form-list">
+            <li class="form-item">
+              <p class="form-item__title">健康署婦女子宮頸抹片檢查服務檢查紀錄結果表單</p>
+              <span class="form-item__status">建置中</span>
+            </li>
+            <li class="form-item">
+              <p class="form-item__title">健康署婦女人類乳突病毒檢測服務檢查紀錄結果表單</p>
+              <span class="form-item__status">建置中</span>
+            </li>
+          </ul>
         </article>
 
-        <article class="form-card form-card--pending">
-          <span class="form-card__number" aria-hidden="true">03</span>
-          <h3>第三張表單</h3>
-          <p>此項目尚未開放，完成後將在此提供測試連結。</p>
-          <span class="form-card__status">建置中</span>
+        <article class="screening-card">
+          <header class="screening-card__header">
+            <span class="screening-card__number" aria-hidden="true">03</span>
+            <div>
+              <h3>口腔癌篩檢</h3>
+              <p class="screening-card__count">共 1 張表單</p>
+            </div>
+          </header>
+          <ul class="form-list">
+            <li class="form-item">
+              <p class="form-item__title">衛生福利部口腔黏膜檢查服務檢查紀錄結果表單</p>
+              <span class="form-item__status">建置中</span>
+            </li>
+          </ul>
         </article>
       </div>
     </section>
   </main>
 
-  <footer>烏日健檢表單測試入口</footer>
+  <footer>烏日澄清公費健檢表單測試入口</footer>
 </body>
 </html>
