@@ -1,0 +1,44 @@
+:root {
+  color-scheme: light;
+  --primary: #0b6b63;
+  --primary-dark: #07534d;
+  --primary-soft: #e8f5f2;
+  --border: #cbd5d1;
+  --text: #17211f;
+  --muted: #5e6a67;
+  --surface: #ffffff;
+  --page: #f3f6f5;
+  --danger: #b42318;
+  --danger-soft: #fff1f0;
+  --success: #176b43;
+  --success-soft: #eaf7ef;
+  --input-text: #0000ff;
+  --shadow: 0 12px 32px rgba(20, 52, 47, 0.09);
+  font-family: "Microsoft JhengHei", "Noto Sans TC", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  color: var(--text);
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+button,
+label,
+input,
+textarea {
+  -webkit-tap-highlight-color: transparent;
+}
